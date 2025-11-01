@@ -1,0 +1,484 @@
+/* CSS Variables */
+:root {
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Roboto', sans-serif;
+    --color-frame: #8b5a2b;
+    --color-text: #333;
+    --color-background: #ffffff;
+    --color-splash-1: #ff6b6b;
+    --color-splash-2: #4ecdc4;
+    --color-border: #eee;
+    --color-muted: #777;
+    --highlight-1: #FF6B6B;
+    --highlight-2: #4ECDC4;
+    --highlight-3: #FFE66D;
+    --highlight-4: #95E1D3;
+    --highlight-5: #FF8B94;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Paint Splotches for Background */
+.paint-splotch {
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.18;
+    pointer-events: none;
+}
+
+/* Example splotch colors and positions */
+.splotch-1 {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle at 40% 60%, var(--highlight-1) 60%, transparent 100%);
+    top: 5vh;
+    left: 2vw;
+}
+.splotch-2 {
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle at 60% 40%, var(--highlight-2) 70%, transparent 100%);
+    top: 60vh;
+    left: 70vw;
+}
+.splotch-3 {
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle at 50% 50%, var(--highlight-3) 80%, transparent 100%);
+    top: 80vh;
+    left: 20vw;
+}
+.splotch-4 {
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle at 60% 60%, var(--highlight-4) 60%, transparent 100%);
+    top: 30vh;
+    left: 80vw;
+}
+.splotch-5 {
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle at 50% 50%, var(--highlight-5) 80%, transparent 100%);
+    top: 10vh;
+    left: 60vw;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    transition: color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+h1:hover, h2:hover, h3:hover {
+    transform: scale(1.12);
+}
+h1:hover { color: var(--highlight-1); }
+h2:hover { color: var(--highlight-2); }
+h3:hover { color: var(--highlight-3); }
+h1:nth-of-type(2):hover { color: var(--highlight-4); }
+h2:nth-of-type(2):hover { color: var(--highlight-5); }
+h3:nth-of-type(2):hover { color: var(--color-frame); }
+
+h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+h2 {
+    font-size: 2.2rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-top: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-weight: 300;
+    font-size: 1.1rem;
+    max-width: 70ch; /* Limits line length for readability */
+}
+
+a {
+    color: var(--color-frame);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #333;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    min-height: 60vh;
+}
+
+/* ------------------------- */
+/* --- Header & Navigation --- */
+/* ------------------------- */
+header {
+    background: var(--color-background);
+    padding: 2rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.subtitle {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--color-muted);
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+nav a {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+nav a:hover {
+    color: #000;
+    transform: scale(1.1);
+}
+
+nav a:nth-of-type(5n+1):hover {
+    border-bottom-color: var(--highlight-1);
+}
+
+nav a:nth-of-type(5n+2):hover {
+    border-bottom-color: var(--highlight-2);
+}
+
+nav a:nth-of-type(5n+3):hover {
+    border-bottom-color: var(--highlight-3);
+}
+
+nav a:nth-of-type(5n+4):hover {
+    border-bottom-color: var(--highlight-4);
+}
+
+nav a:nth-of-type(5n+5):hover {
+    border-bottom-color: var(--highlight-5);
+}
+
+nav a.active {
+    color: #000;
+    font-weight: 700;
+    border-bottom-color: var(--color-frame);
+}
+
+
+/* Homepage Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.splash-bg {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.splash-bg::before,
+.splash-bg::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.15;
+}
+
+.splash-bg::before {
+    width: 350px;
+    height: 350px;
+    background: var(--color-splash-1);
+    top: -100px;
+    left: -150px;
+}
+
+.splash-bg::after {
+    width: 450px;
+    height: 450px;
+    background: var(--color-splash-2);
+    bottom: -150px;
+    right: -100px;
+}
+
+.intro-content {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.intro-content p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--color-text);
+    color: var(--color-background);
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 1.5rem;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #555;
+    color: var(--color-background);
+}
+
+
+/* ------------------------- */
+/* --- Gallery Page (Frames & Layout) --- */
+/* ------------------------- */
+.gallery-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gallery-intro p {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #666;
+}
+
+/* This is the container for each artist's section */
+.artist-wing {
+    margin-bottom: 4rem; /* Adds space between artist wings */
+}
+
+.artist-wing h2 {
+    margin-bottom: 0.5rem;
+}
+
+.artist-bio {
+    font-size: 1rem;
+    font-style: italic;
+    color: #555;
+    max-width: 80ch;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    border-left: 3px solid #eee;
+}
+
+.gallery-grid {
+    display: grid;
+    /* Responsive Grid: 1 column on small, 3 on large */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Frame styling with gradient border */
+.art-frame {
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border: 10px solid transparent;
+    padding: 25px;
+    background: var(--color-background);
+    border-image-source: linear-gradient(135deg, #a16a3c, #5a3a1b);
+    border-image-slice: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+/* Ensure artwork images are displayed in a consistent 9:16 (portrait) aspect ratio
+   Use aspect-ratio + object-fit to crop without distorting. This keeps the frame/matting
+   intact while the image fills the portrait area. */
+.art-frame img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    height: auto; /* let the browser compute height from aspect-ratio */
+    object-fit: cover; /* crop to fill the portrait box */
+    object-position: center center;
+}
+.art-item {
+    display: block;
+    text-align: center;
+}
+
+.art-label {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+.art-label .medium {
+    display: block;
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin-top: 5px;
+}
+
+/* ------------------------- */
+/* --- About Page --- */
+/* ------------------------- */
+.about-content article {
+    max-width: 800px;
+    margin: 0 auto; /* Center the article */
+}
+
+.statement-intro {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #000;
+    font-weight: 400;
+    border-left: 3px solid var(--color-frame);
+    padding-left: 1.5rem;
+}
+
+/* ------------------------- */
+/* --- Footer --- */
+/* ------------------------- */
+footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem 1rem;
+    background-color: #fcfcfc;
+    border-top: 1px solid #f0f0f0;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* ------------------------- */
+/* --- Responsive Design --- */
+/* ------------------------- */
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+    /* Typography */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+
+    /* Navigation */
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    /* Splash Effect */
+    .splash-bg::before,
+    .splash-bg::after {
+        filter: blur(40px);
+        opacity: 0.2;
+    }
+    .splash-bg::before { width: 200px; height: 200px; }
+    .splash-bg::after { width: 300px; height: 300px; }
+
+    /* Frame Adjustments */
+    .art-frame {
+        border-width: 10px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Typography */
+    body { line-height: 1.5; }
+    h1 { font-size: 2rem; }
+    p { font-size: 1rem; }
+
+    /* Layout */
+    .hero { padding: 2rem 1rem; }
+    .gallery-grid { gap: 1.5rem; }
+}
+/* ------------------------- */
+/* --- Nav Bar for Gallery --- */
+/* ------------------------- */
+
+html {
+    scroll-behavior: smooth;
+    /* This adds a small offset so the section heading
+       doesn't jump right under the browser's top edge */
+    scroll-padding-top: 2rem; 
+}
+.artist-nav {
+    /* Adds a line above and below the nav */
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+.artist-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Makes the links horizontal */
+    justify-content: center; /* Centers the links */
+    flex-wrap: wrap; /* Allows them to stack on small screens */
+    gap: 1rem; /* Space between the links */
+}
+
+.artist-nav a {
+    display: block;
+    padding: 0.5rem 1.25rem;
+    background-color: #f5f5f5; /* Light grey background */
+    border-radius: 20px; /* Creates the "pill" shape */
+    color: #555;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.artist-nav a:hover {
+    background-color: var(--color-frame); /* Uses your brown frame color */
+    color: var(--color-background); /* White text */
+}
